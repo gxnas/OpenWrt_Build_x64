@@ -3,6 +3,9 @@
 <h1>OpenWrt_Build_x64</h1>
 </div>
 
+# 致谢
+[Lean](https://github.com/coolsnowwolf/lede)、[gxnas](https://github.com/gxnas/OpenWrt_Build_x64)
+
 ## 当前编译状态：
 |    序号    |     架构名称    |    编译状态    |    固件下载    |
 | :-----------------: | :-------------: |:-----------------: | :-----------------: |
@@ -15,7 +18,7 @@
 </br>
 
 ## 项目说明 [![](https://github.com/gxnas/OpenWrt_Build_x64/blob/main/personal/describes.svg)](#项目说明-)
-- 固件编译使用的源代码来自：[![Lean](https://img.shields.io/badge/Lede-Lean-red.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede)，编译来自：[[gxnas]](https://github.com/gxnas/OpenWrt_Build_x64)
+- 固件编译使用的源代码来自：[![Lean](https://img.shields.io/badge/Lede-Lean-red.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede)，编译来自：[gxnas](https://github.com/gxnas/OpenWrt_Build_x64)
 - 项目使用 Github Actions 拉取 [Lean](https://github.com/coolsnowwolf/lede) 的 `Openwrt-23.05（内核版本6.6）` 源码仓库进行云编译
 - 🔴[OpenWrt_2305_x64_全功能版] 固件默认的IP地址：`192.168.18.1` 默认密码：`无密码`
 - 🔴[OpenWrt_2305_x64_主路由版] 固件默认 IP 地址：`192.168.18.1` 默认密码：`无密码`
