@@ -6,11 +6,11 @@
 ## 当前编译状态：
 |    序号    |     架构名称    |    编译状态    |    固件下载    |
 | :-----------------: | :-------------: |:-----------------: | :-----------------: |
-| 1 |OpenWrt_2305_x64_全功能版|<a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_all)|
-| 2 |OpenWrt_2305_x64_主路由版|<a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_wjq.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_wjq.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_wjq)|
-| 3 |OpenWrt_2305_x64_旁路由版|<a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_gxnas.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_gxnas.yml/badge.svg?style=flat" /></a>|[下载地址](https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_gxnas)|
-| 4 |OpenWrt_2305_x64_精简版|<a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_soot.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_soot.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_soot)|
-| 5 |OpenWrt_2305_x64_测试版|<a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_test.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_test.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_test)|
+| 1 |OpenWrt_2305_x64_全功能版|<a href="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml"><img src="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/bobvane/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_all)|
+| 2 |OpenWrt_2305_x64_主路由版|<a href="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_wjq.yml"><img src="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_wjq.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/bobvane/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_wjq)|
+| 3 |OpenWrt_2305_x64_旁路由版|<a href="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_gxnas.yml"><img src="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_gxnas.yml/badge.svg?style=flat" /></a>|[下载地址](https://github.com/bobvane/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_gxnas)|
+| 4 |OpenWrt_2305_x64_精简版|<a href="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_soot.yml"><img src="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_soot.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/bobvane/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_soot)|
+| 5 |OpenWrt_2305_x64_测试版|<a href="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_test.yml"><img src="https://github.com/bobvane/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_test.yml/badge.svg?style=flat" /></a>    |[下载地址](https://github.com/bobvane/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_test)|
 
 </br>
 
@@ -30,11 +30,11 @@
 
 ----
 - REPO_TOKEN密匙制作教程：https://git.io/jm.md
-- 云编译需要 [在此](https://github.com/settings/tokens) 创建个```token```,勾选：```repo```, ```workflow```，保存所得的key
-- 然后在此仓库```Settings```->```Secrets```中添加个名字为```GH_TOKEN```的Secret,填入token获得的key
+- 云编译需要 [在此](https://github.com/settings/tokens) 创建个```token```,勾选：```repo```， ```workflow```，保存所得的key
+- 然后在此仓库```设置```->```Secrets```中添加个名字为```GH_TOKEN```的Secret,填入token获得的key
 
-- Telegram通知```Settings```->```Secrets```中添加名字为```TELEGRAM_TO```和```TELEGRAM_TOKEN```，值分别为BOT_USER _ID和BOT_TOKEN
-- 企业微信机器人通知```Settings```->```Secrets```中添加个名字为```WEBHOOK_SEND_KEY```，值为企业微信机器人https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=后面的值
+- Telegram通知```设置```->```Secrets```中添加名字为```TELEGRAM_TO```和```TELEGRAM_TOKEN```，值分别为BOT_USER _ID和BOT_TOKEN
+- 企业微信机器人通知```设置```->```Secrets```中添加个名字为```WEBHOOK_SEND_KEY```，值为企业微信机器人https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=后面的值
 ----
 
 
