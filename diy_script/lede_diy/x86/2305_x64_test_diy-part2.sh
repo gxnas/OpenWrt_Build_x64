@@ -95,6 +95,10 @@ rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
 git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
 
+# luci-app-echworkers
+rm -rf feeds/luci/applications/luci-app-echworkers
+merge_package main https://github.com/ntbowen/echworker-for-openwrt package/custom luci-app-echworkers
+
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall
 merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
