@@ -38,7 +38,7 @@ env:
 
 jobs:
   CheckRepo:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       REPO_URL_Lede: https://github.com/coolsnowwolf/lede
       REPO_BRANCH_Lede: master
@@ -171,6 +171,9 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
@@ -185,9 +188,9 @@ jobs:
         $GITHUB_WORKSPACE/diy_script/preset-clash-core.sh $CLASH_KERNEL
         $GITHUB_WORKSPACE/diy_script/preset-adguard-core.sh $CLASH_KERNEL
         
-        sed -i 's/CONFIG_LINUX.*/CONFIG_LINUX_6_6=y/g' .config
+        #sed -i 's/CONFIG_LINUX.*/CONFIG_LINUX_6_6=y/g' .config
         
-        sed -i 's/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
+        #sed -i 's/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
         
         #sed -i 's/KERNEL_TESTING_PATCHVER:=*.*/KERNEL_TESTING_PATCHVER:=6.6/g' target/linux/x86/Makefile
 
@@ -276,13 +279,9 @@ jobs:
     - name: Delete files
       run: |
         cd openwrt
-        if [ -f "rename.sh" ]; then
-          bash rename.sh
-        fi
-        if [ -f "wget/open_dev_md5" ]; then
-          Kernel=`grep "_uefi.img.gz" wget/open_dev_md5 | cut -d - -f 2 | cut -d _ -f 2 `
-          echo "KERNEL=$Kernel" >> $GITHUB_ENV
-        fi
+        bash  rename.sh
+        Kernel=`grep "_uefi.img.gz" wget/open_dev_md5 | cut -d - -f 2 | cut -d _ -f 2 `
+        echo "KERNEL=$Kernel" >> $GITHUB_ENV
 
     - name: Organize files
       id: organize
@@ -325,7 +324,7 @@ jobs:
           - 🔑 默认密码：无密码
           - 🧊 更新时间：${{ env.date }}
           - 🎈 源码哈希值：${{ env.hash }}
-        artifacts: ${{ env.FIRMWARE }}/*uefi*
+        artifacts: ${{ env.FIRMWARE }}/*
 
     - name: Completion time 
       run: |
