@@ -223,6 +223,9 @@ jobs:
 
     - name: Download package
       id: package
+      env:
+        DOWNLOAD_MIRROR: https://downloads.openwrt.org
+        GIT_MIRROR: https://github.com
       run: |
         cd openwrt
         make defconfig
@@ -232,6 +235,9 @@ jobs:
 
     - name: Compile the firmware
       id: compile
+      env:
+        DOWNLOAD_MIRROR: https://downloads.openwrt.org
+        GIT_MIRROR: https://github.com
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
