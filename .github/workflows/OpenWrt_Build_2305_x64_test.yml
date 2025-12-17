@@ -288,10 +288,8 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd openwrt/bin/targets/*/*
-        mv *bios.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.img.gz
-        mv *uefi.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.img.gz
-        #mv openwrt_bios.md5 ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.md5
-        #mv openwrt_uefi.md5 ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.md5
+        mv openwrt-x86-64-generic-squashfs-combined.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.img.gz
+        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.img.gz
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
