@@ -14,13 +14,11 @@ on:
         description: '启动OpenWrt_Build_2305_x64_test编译'
         required: true
         default: 'true'
-  #schedule:
-    #- cron: 0 2 * * 5
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: lede25.feeds.conf.default
+  FEEDS_CONF: feeds_config/lede25.feeds.conf.default
   CONFIG_FILE: config/lede_config/2305_x64_test.config
   CONFIGS: config/lede_config
   DIY_P1_SH: diy_script/lede_diy/x86/2305_x64_test_diy-part1.sh
@@ -188,9 +186,9 @@ jobs:
         $GITHUB_WORKSPACE/diy_script/preset-clash-core.sh $CLASH_KERNEL
         $GITHUB_WORKSPACE/diy_script/preset-adguard-core.sh $CLASH_KERNEL
         
-        #sed -i 's/CONFIG_LINUX.*/CONFIG_LINUX_6_6=y/g' .config
+        sed -i 's/CONFIG_LINUX.*/CONFIG_LINUX_6_6=y/g' .config
         
-        #sed -i 's/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
+        sed -i 's/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
         
         #sed -i 's/KERNEL_TESTING_PATCHVER:=*.*/KERNEL_TESTING_PATCHVER:=6.6/g' target/linux/x86/Makefile
 
