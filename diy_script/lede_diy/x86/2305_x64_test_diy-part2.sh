@@ -1,7 +1,7 @@
 #!/bin/bash
 #===============================================
-# Description: 2305_x64_all DIY script part 2
-# File name: 2305_x64_all_diy-part2.sh
+# Description: 2305_x64_test DIY script part 2
+# File name: 2305_x64_test_diy-part2.sh
 # Lisence: MIT
 # By: GXNAS
 #===============================================
@@ -63,7 +63,6 @@ cp -r packages/net/ipt2socks package/helloworld/ipt2socks
 cp -r packages/net/pdnsd-alt package/helloworld/pdnsd-alt
 cp -r packages/net/redsocks2 package/helloworld/redsocks2
 rm -rf packages
-rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
 
 # 修复Shadowsocks报错
 rm -rf feeds/helloworld/shadowsocks-rust
@@ -90,14 +89,13 @@ rm -rf kwrt-packages
 rm -rf feeds/luci/applications/{luci-app-frpc,luci-app-frps,luci-app-hd-idle,luci-app-adblock,luci-app-filebrowser}
 merge_package master https://github.com/immortalwrt/luci package/custom applications/luci-app-openlist applications/luci-app-filebrowser applications/luci-app-syncdial applications/luci-app-eqos applications/luci-app-nps applications/luci-app-nfs applications/luci-app-frpc applications/luci-app-frps applications/luci-app-hd-idle applications/luci-app-adblock applications/luci-app-socat
 
+# nikki
+git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/luci-app-nikki
+
 # mosdns
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
 git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
-
-# luci-app-echworkers
-rm -rf feeds/luci/applications/luci-app-echworkers
-merge_package main https://github.com/ntbowen/echworker-for-openwrt package/custom luci-app-echworkers
 
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -120,27 +118,12 @@ rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 -b js https://github.com/lwb1978/luci-theme-kucat package/luci-theme-kucat
 
 # 修改 argon 为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 sed -i 's/Bootstrap theme/Argon theme/g' feeds/luci/collections/*/Makefile
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/*/Makefile
-
-# nikki
-git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/luci-app-nikki
-
-# 下载UnblockNeteaseMusic内核
-NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
-curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
-echo "$(grep sha commits.json | sed -n "1,1p" | cut -c 13-52)">"$NAME/core_local_ver"
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/app.js -o $NAME/core/app.js
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/bridge.js -o $NAME/core/bridge.js
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/ca.crt -o $NAME/core/ca.crt
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.crt -o $NAME/core/server.crt
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.key -o $NAME/core/server.key
-
-# ikoolproxy
-git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
