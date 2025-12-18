@@ -14,11 +14,13 @@ on:
         description: '启动OpenWrt_Build_2305_x64_test编译'
         required: true
         default: 'true'
+  #schedule:
+    #- cron: 0 2 * * 5
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: feeds_config/lede25.feeds.conf.default
+  FEEDS_CONF: feeds_config/lede23.feeds.conf.default
   CONFIG_FILE: config/lede_config/2305_x64_test.config
   CONFIGS: config/lede_config
   DIY_P1_SH: diy_script/lede_diy/x86/2305_x64_test_diy-part1.sh
@@ -223,9 +225,6 @@ jobs:
 
     - name: Download package
       id: package
-      env:
-        DOWNLOAD_MIRROR: https://downloads.openwrt.org
-        GIT_MIRROR: https://github.com
       run: |
         cd openwrt
         make defconfig
@@ -235,9 +234,6 @@ jobs:
 
     - name: Compile the firmware
       id: compile
-      env:
-        DOWNLOAD_MIRROR: https://downloads.openwrt.org
-        GIT_MIRROR: https://github.com
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
@@ -292,8 +288,10 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
         cd openwrt/bin/targets/*/*
-        mv openwrt-x86-64-generic-squashfs-combined.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.img.gz
-        mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.img.gz
+        mv *bios.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.img.gz
+        mv *uefi.img.gz ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.img.gz
+        #mv openwrt_bios.md5 ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-bios.md5
+        #mv openwrt_uefi.md5 ${{ env.FILE_NAME }}${{ env.FILE_DATE }}-uefi.md5
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
